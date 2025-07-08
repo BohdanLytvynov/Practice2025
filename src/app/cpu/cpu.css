@@ -1,0 +1,12 @@
+.box-style{
+    border: solid, 1px, black;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.span-bold{
+    font-weight: bold;
+}

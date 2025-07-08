@@ -1,0 +1,41 @@
+
+.m-10
+{
+    margin: 10px;
+}
+
+.wrapper {
+    display: flex; /* Делаем обертку flex-контейнером */
+    flex-direction: column; /* Элементы внутри обертки располагаются вертикально */
+    min-height: 100vh; /* Минимальная высота обертки - 100% высоты окна просмотра */
+}
+
+.content {
+    flex: 1 0 auto; /* Позволяет блоку с контентом растягиваться и занимать все доступное пространство */
+    /* flex-grow: 1; - блок будет растягиваться, заполняя свободное место */
+    /* flex-shrink: 0; - блок не будет сжиматься */
+    /* flex-basis: auto; - базовая ширина/высота элемента */
+    padding: 20px; /* Добавим отступы для контента */
+    background-color: #f0f0f0; /* Для наглядности */
+}
+
+footer {
+    flex-shrink: 0; /* Футер не будет сжиматься */
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 10px 20px;
+    background-color: #eee;
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+.lv{
+    border: 1px, solid, black;
+    border-radius: 3rem;
+}

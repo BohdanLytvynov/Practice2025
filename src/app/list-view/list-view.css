@@ -1,0 +1,25 @@
+.scroll
+{
+    height: 60vmin;   
+    overflow-y : scroll;
+}
+
+.lv-border
+{
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.margin{
+    margin-right: 1rem;
+}
+
+.inp{
+    width: 100%;
+    font-size: 20px;    
+}
+
+.m-bottom{
+    margin-bottom: 1rem;
+}

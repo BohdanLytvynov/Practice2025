@@ -1,14 +1,31 @@
-<div class="container">
-<h1>CPU Store V 1.0.0.0</h1>
+<div class="wrapper">
+  <header>
+    <h1>{{title}}</h1>
+  </header>
+  <main class="content">
+    <p>
+      Here you can see the list of CPUs. Also you can manage them.
+    </p>
+    
+    <app-list-view></app-list-view>
+
+    <div class="offcanvas offcanvas-start" id="addOffcanvas">
+        <app-add-item></app-add-item>
+    </div>
+
+    <div class="offcanvas offcanvas-start" id="editOffcanvas">
+        <app-edit-item></app-edit-item>
+    </div>
+   
+    <div class="d-inline-flex p-3">
+        <button type="button" class="btn-primary m-10" 
+        data-bs-toggle="offcanvas" data-bs-target="#addOffcanvas">Add Item</button>
+        <button type="button" class="btn-warning m-10" 
+        data-bs-toggle="offcanvas" data-bs-target="#editOffcanvas">Edit Item</button>
+        <button type="button" class="btn-danger m-10">Delete Item</button>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; {{footer}}</p>
+  </footer>
 </div>
-
-<main>
-
-</main>
-
-<footer>
-
-</footer>
-
-
-<router-outlet />
