@@ -1,1 +1,21 @@
-<p>add-item works!</p>
+<div class="ext-container">
+  <div class="grid-wrapper">
+    <header>
+      <h1>Add New CPU</h1>
+    </header>
+    <main class="container">
+        <app-input label="Enter Brand:" [converter]="str_to_strConverter"
+        [validator]="text_emptyValidator">
+            <input input-element type="text">
+        </app-input>
+
+        <app-input label="Enter CPU Name:" [converter]="str_to_strConverter"
+        [validator]="text_emptyValidator">
+            <input input-element type="text">
+        </app-input>
+    </main>
+    <footer>
+      <p>text</p>
+    </footer>
+  </div>
+</div>

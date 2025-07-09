@@ -10,8 +10,7 @@ import { ListView } from "./list-view/list-view";
   selector: 'app-root',
   imports: [RouterOutlet, AddItem, EditItem, ListView],
   templateUrl: './app.html',
-  styleUrl: './app.css',
-  encapsulation: ViewEncapsulation.None
+  styleUrl: './app.css',  
 })
 export class App {
   protected title = 'CPU Storage';
