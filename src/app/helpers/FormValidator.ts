@@ -12,6 +12,10 @@ export class FormValidator{
         this.validArray[index] = value;
     }
 
+    getValue(index : number) : boolean{
+        return this.validArray[index];
+    }
+
     CheckValidArray(start : number, stop : number) : boolean
     {
         for(let i : number = start; i <= stop; ++i)
@@ -21,5 +25,10 @@ export class FormValidator{
         }
 
         return true;
+    }
+
+    resetValidarray(start : number, end : number)
+    {
+        this.validArray = this.validArray.fill(false, start, end);
     }
 }

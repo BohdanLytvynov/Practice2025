@@ -25,3 +25,9 @@ footer {
     text-align: center;
 }
 
+.form-scroll
+{
+    height: 80vmin;   
+    overflow-y : scroll;
+}
+

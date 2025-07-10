@@ -3,3 +3,8 @@ body, html{
     margin: 0px;
     height: 100%;
 }
+
+.b-disabled:hover{
+    background-color: #6c757d;
+    cursor: none;
+}

@@ -1,31 +1,15 @@
-export type ValidatorResult = {isValid : boolean, error : string}
-
-export class Validators{
-
-    public static ValidateTextEmpty = (input: string) =>{
-    let result : ValidatorResult = {isValid: false, error:''}
-    if(input.length == 0){        
-        result.error = 'Field is empty!';
-        result.isValid = false;
-    }
-    else
-    {
-        result.isValid = true;
-    }
-    return result;
+export class Validators {
+  public static ValidateTextEmpty(input: string): boolean {
+    if (input != undefined && input.length == 0) {
+      return false;
+    } else return true;
   }
 
-  public static ValidateNumberGreaterThenZero = (number : number) =>{
-    let result : ValidatorResult = {isValid: false, error:''}
-    if(number > 0)
-    {
-      result.isValid = true;      
-    }
-    else{
-      result.error = "Value must be greater then Zero!";
-      result.isValid = false;
-    }
+  public static ValidateNumberGreaterThenZero(number: number): boolean {
+    if (isNaN(number)) return false;
 
-    return result;
+    if (number <= 0) return false;
+
+    return true;
   }
 }

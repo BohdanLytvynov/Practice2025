@@ -3,16 +3,100 @@
     <header>
       <h1>Add New CPU</h1>
     </header>
-    <main class="container">
-        <app-input label="Enter Brand:" [converter]="str_to_strConverter"
-        [validator]="text_emptyValidator">
-            <input input-element type="text">
-        </app-input>
+    <main class="container form-scroll">
+      <div class="mb-3">
+        <label for="brandInput" class="form-label">Enter CPU's Brand:</label>
+        <input type="text" [ngClass]="this.getValue(0)? 'form-control is-valid' : 'form-control is-invalid'" 
+        id="brandInput" [(ngModel)]="brand" (ngModelChange)="onBrandChanged($event)">
+        @if(this.getValue(0))
+        {
+          <p class="valid-feedback">You are doing well!</p>
+        }
+        @else {
+          <p class="invalid-feedback">Incorect Input!</p>
+        }
+      </div>
 
-        <app-input label="Enter CPU Name:" [converter]="str_to_strConverter"
-        [validator]="text_emptyValidator">
-            <input input-element type="text">
-        </app-input>
+      <div class="mb-3">
+        <label for="nameInput" class="form-label">Enter CPU's Name:</label>
+        <input type="text" [ngClass]="this.getValue(1)? 'form-control is-valid' : 'form-control is-invalid'" 
+        id="nameInput" [(ngModel)]="name" (ngModelChange)="onNameChanged($event)">
+        @if(this.getValue(1))
+        {
+          <p class="valid-feedback">You are doing well!</p>
+        }
+        @else {
+          <p class="invalid-feedback">Incorect Input!</p>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="clockFrequencyInput" class="form-label">Enter CPU's Frequency:</label>
+        <input type="text" [ngClass]="this.getValue(2)? 'form-control is-valid' : 'form-control is-invalid'" id="clockFrequencyInput" 
+        [(ngModel)]="clock_frequency" (ngModelChange)="onClockFrequencyChanged($event)">
+        @if(this.getValue(2))
+        {
+          <p class="valid-feedback">You are doing well!</p>
+        }
+        @else {
+          <p class="invalid-feedback">Incorect Input!</p>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="cacheMemorySizeInput" class="form-label">Enter CPU's Cache Memory Size:</label>
+        <input type="text" [ngClass]="this.getValue(3)? 'form-control is-valid' : 'form-control is-invalid'" id="cacheMemorySizeInput" 
+        [(ngModel)]="cache_memory_size" (ngModelChange)="onCacheMemorySizeChanged($event)">
+        @if(this.getValue(3))
+        {
+          <p class="valid-feedback">You are doing well!</p>
+        }
+        @else {
+          <p class="invalid-feedback">Incorect Input!</p>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="numberOfCoresInput" class="form-label">Enter CPU's Number of Cores:</label>
+        <input type="text" [ngClass]="this.getValue(4)? 'form-control is-valid' : 'form-control is-invalid'" id="numberOfCoresInput"
+        [(ngModel)]="number_of_cores" (ngModelChange)="onNumberOfCoresChanged($event)">
+        @if(this.getValue(4))
+        {
+          <p class="valid-feedback">You are doing well!</p>
+        }
+        @else {
+          <p class="invalid-feedback">Incorect Input!</p>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="bitDepthInput" class="form-label">Enter CPU's Bit Depth:</label>
+        <input type="text" [ngClass]="this.getValue(5)? 'form-control is-valid' : 'form-control is-invalid'" id="bitDepthInput"
+        [(ngModel)]="bit_depth" (ngModelChange)="onBitDepthChanged($event)">
+        @if(this.getValue(5))
+        {
+          <p class="valid-feedback">You are doing well!</p>
+        }
+        @else {
+          <p class="invalid-feedback">Incorect Input!</p>
+        }
+      </div>
+
+      <div class="row">
+        <div class="col-auto">
+          <button type="submit" [ngClass]="inputValid? 'btn btn-primary' : 'btn btn-secondary'" 
+          (click)="onAddButtonPressed()">Add Item</button>
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-warning mb-3" 
+          (click)="onClearButtonPressed()">Clear</button>
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-danger mb-3" data-bs-dismiss="offcanvas">Back           
+          </button>
+        </div>
+      </div> 
+
     </main>
     <footer>
       <p>text</p>
