@@ -31,4 +31,12 @@ export class FormValidator{
     {
         this.validArray = this.validArray.fill(false, start, end);
     }
+
+    setValidArrayWith(start : number, stop : number, value : boolean)
+    {
+        for(let i : number = start; i <= stop; ++i)
+        {
+            this.validArray[i] = value;
+        }
+    }
 }

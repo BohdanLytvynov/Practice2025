@@ -19,3 +19,36 @@ body, html{
     border: 2px solid black;
     background-color: rgb(191, 191, 191);
 }
+
+.ext-container{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.grid-wrapper{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+header{
+    padding: 10px 20px;    
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+footer {
+    flex-shrink: 0; /* Футер не будет сжиматься */
+    padding: 10px 20px;
+    background-color: #333;
+    color: #333;
+    text-align: center;
+}
+
+.form-scroll
+{
+    height: 80vmin;   
+    overflow-y : scroll;
+}

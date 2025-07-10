@@ -43,6 +43,11 @@ export class EditItem extends FormValidator implements OnChanges {
       this.number_of_cores = res.number_of_cores;
       this.bit_depth = res.bit_depth;
     }
+
+    super.setValidArrayWith(0,6, true);
+
+    this.inputValid = super.CheckValidArray(0, 6);
+
   }
   
     onEditButtonPressed()
