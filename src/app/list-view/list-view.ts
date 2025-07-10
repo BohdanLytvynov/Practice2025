@@ -1,8 +1,9 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input,} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit, Output,} from '@angular/core';
 import { CPU, CPU_Fields } from '../../models/models';
-import { Cpu } from "../cpu/cpu";
+import { Cpu, SelctedCpuInfo } from "../cpu/cpu";
 import { FormsModule } from '@angular/forms';
 import { CpuStore } from '../Services/cpu-store';
+import { Subscribable, Subscription } from 'rxjs';
 
 export enum Direction{
   Asc = 0, Dsc
@@ -14,9 +15,18 @@ export enum Direction{
   templateUrl: './list-view.html',
   styleUrl: './list-view.css'
 })
-export class ListView implements AfterViewInit{
+export class ListView implements AfterViewInit, OnInit, OnDestroy{
   
+  @Output() 
+  elementSelected : EventEmitter<number> = new EventEmitter<number>();
+  
+  sub! : Subscription;
+
   cpus : CPU[] = [];
+
+  selectedElements : boolean[] = [];
+
+  prevSelectedIndex : number = -1;
      
   enums: string[] = [];
 
@@ -29,8 +39,20 @@ export class ListView implements AfterViewInit{
   constructor(private cdref: ChangeDetectorRef, private cpuService : CpuStore)
   {
     this.cpus = cpuService.getCpus();
+    this.selectedElements = new Array<boolean>(this.cpus.length);
   }
-  
+  ngOnInit(): void {
+    this.sub = this.cpuService.onOperationCompleted$.subscribe(next => 
+    {
+      this.cpus = this.cpuService.getCpus();
+      this.selectedElements = new Array<boolean>(this.cpus.length);
+    }
+    )
+  }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+    
   ngAfterViewInit(): void {    
     this.enums = Object.keys(CPU_Fields).filter(e => isNaN(Number(e)))   
     this.cdref.detectChanges();         
@@ -126,5 +148,21 @@ export class ListView implements AfterViewInit{
       this.cpus = this.cpus.sort(ascSortFunc)
       this.sortDir = Direction.Dsc;
     }
+  }
+
+  onElementSelected(info : SelctedCpuInfo)
+  {
+    if(this.prevSelectedIndex >= 0)
+    {
+      this.selectedElements[this.prevSelectedIndex] = false;
+    }
+    this.prevSelectedIndex = info.showNumber -1;
+
+    if(this.prevSelectedIndex >= 0)
+    {
+      this.selectedElements[this.prevSelectedIndex] = true;
+    }
+
+    this.elementSelected.emit(info.id);    
   }
 }

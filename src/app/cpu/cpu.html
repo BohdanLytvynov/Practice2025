@@ -1,4 +1,4 @@
-<div class="container-fluid box-style">
+<div #container [ngClass]="isSelected? 'container-fluid box-style lv-element-select' : 'container-fluid box-style lv-element'">
     <h1>{{showNumber}}) {{data.name}}</h1>
     <p><span class="span-bold">Brand: </span> {{data.brand}}</p>
     <p><span class="span-bold">Number of CPU cores: </span> {{data.number_of_cores}}</p>

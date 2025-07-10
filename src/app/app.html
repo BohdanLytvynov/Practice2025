@@ -7,7 +7,7 @@
       Here you can see the list of CPUs. Also you can manage them.
     </p>
     
-    <app-list-view></app-list-view>
+    <app-list-view (elementSelected)="onSelectItem($event)"></app-list-view>
 
     <div class="offcanvas offcanvas-start" id="addOffcanvas">
         <app-add-item></app-add-item>
@@ -20,9 +20,11 @@
     <div class="d-inline-flex p-3">
         <button type="button" class="btn btn-primary m-10" 
         data-bs-toggle="offcanvas" data-bs-target="#addOffcanvas">Add Item</button>
-        <button type="button" class="btn btn-warning m-10" 
+        <button type="button" [ngClass]="canEditDelete? 'btn btn-warning m-10' : 'btn btn-secondary m-10 b-disabled'"
         data-bs-toggle="offcanvas" data-bs-target="#editOffcanvas">Edit Item</button>
-        <button type="button" class="btn btn-danger m-10">Delete Item</button>
+        <button type="button" [ngClass]="canEditDelete? 'btn btn-danger m-10' : 'btn btn-secondary m-10 b-disabled'"
+        (click)="onDeleteButtonPressed()">
+          Delete Item</button>
     </div>
   </main>
   <footer>

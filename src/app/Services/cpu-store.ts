@@ -33,7 +33,7 @@ export class CpuStore {
     if(lastId >= 0){
       cpu.id = lastId + 1;
       this.cpus.unshift(cpu);
-      this.onOperationCompleted$.next(undefined);
+      // this.onOperationCompleted$.next(undefined);
       return true;
     }    
     

@@ -18,7 +18,10 @@
     </div>
     <div class="list-group scroll lv-border">
         @for(cpu of cpus; track cpu; let index = $index){
-            <app-cpu [data]="cpu" [showNumber]="index + 1"></app-cpu>
+            <app-cpu [isSelected]="selectedElements[index]"
+            [data]="cpu" 
+            (selected)="onElementSelected($event)"
+            [showNumber]="index + 1"></app-cpu>
         }
     </div>
 </div>

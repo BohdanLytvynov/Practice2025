@@ -8,3 +8,14 @@ body, html{
     background-color: #6c757d;
     cursor: none;
 }
+
+.lv-element:hover{
+    border: 3px solid black;
+    background-color: rgb(140, 189, 225);
+    opacity: 0.9;
+}
+
+.lv-element-select{
+    border: 2px solid black;
+    background-color: rgb(191, 191, 191);
+}
