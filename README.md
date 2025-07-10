@@ -57,3 +57,10 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## How to launch the project.
+As it is an **Angular** project you need the node_js tools for that. 
+- Install nvm (node version manager) here is the [link](https://github.com/coreybutler/nvm-windows)
+- After that will be done use it to install node js and npm with that.
+- Then you have to install Angular with this command: **npm install -g @angular/cli**
+- When all is ready use **ng serve** to run the project
