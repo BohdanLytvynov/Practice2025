@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CPU } from '../../models/models';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -9,9 +10,12 @@ export class CpuStore {
 
   private cpus : CPU[] = []
 
+  public onOperationCompleted$ : Subject<any>;
+
   constructor() 
   {
     console.log("CpuStore Service Initialized...");
+    this.onOperationCompleted$ = new Subject<any>();
   }
 
   getCpus() : CPU[]{
@@ -24,11 +28,12 @@ export class CpuStore {
     if(this.cpus.length == 0)
       lastId = 0;
     else
-      lastId = this.cpus.at(this.cpus.length - 1)!.id;
+      lastId = this.cpus.at(this.cpus.length - 1)!.id;    
 
     if(lastId >= 0){
-      cpu.id = lastId;
+      cpu.id = lastId + 1;
       this.cpus.unshift(cpu);
+      this.onOperationCompleted$.next(undefined);
       return true;
     }    
     
@@ -44,13 +49,14 @@ export class CpuStore {
     if(cpuForEdit == undefined) return false;
 
     cpuForEdit.Update(src);
-
+    this.onOperationCompleted$.next(undefined);
     return true;    
   }
 
   removeCpu(id : number) : boolean{
     let newArray = this.cpus.filter((e, i) => e.id != id);
     this.cpus = newArray;
+    this.onOperationCompleted$.next(undefined);
     return true;
   }  
 
@@ -84,7 +90,7 @@ export class CpuStore {
         86
       ),
       new CPU(
-        3, 
+        4, 
         'AMD',
         'AMD Phenom',
         2.6,
@@ -93,7 +99,7 @@ export class CpuStore {
         64
       ),
       new CPU(
-        3, 
+        5, 
         'AMD',
         'AMD Phenom II',
         3.6,
