@@ -22,6 +22,11 @@ export class CpuStore {
     return this.cpus;
   }  
 
+  getCpuById(id : number) : CPU | undefined
+  {
+    return this.cpus.find(e => e.id == id);
+  }
+
   addCpu(cpu : CPU) : boolean{
     let lastId : number = -1;
 

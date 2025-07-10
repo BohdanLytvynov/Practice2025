@@ -21,7 +21,7 @@ export class App {
 
   selectedIndex : number = -1;
   canEditDelete : boolean = false;
-
+  
   constructor(private cpuStore : CpuStore){
     this.cpuStore.MockInit();
     this.cpus = cpuStore.getCpus();
